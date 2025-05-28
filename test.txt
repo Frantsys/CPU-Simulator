@@ -1,0 +1,7 @@
+# Meu primeiro programa para a CPU simulada
+LOAD R0, 5
+LOAD R1, 12
+ADD R0, R1
+STORE [30], R0
+LOAD R2, [30]
+HLT
