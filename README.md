@@ -1,37 +1,54 @@
-# Simulador de CPU em Python
+# 🖥️ Simulador de CPU em Python
 
-Este repositório contém um projeto simples que simula o funcionamento de uma CPU utilizando Python. O programa lê um arquivo de texto contendo instruções e executa cada comando de forma organizada, reproduzindo o comportamento básico de um processador.
+Este projeto é um simulador simples de CPU, desenvolvido em Python, que interpreta e executa instruções escritas em um arquivo de texto. Ele simula operações básicas de registradores e memória, servindo como uma introdução prática à arquitetura de computadores.
 
-## 📁 Estrutura do Projeto
+## 📁 Estrutura dos Arquivos
 
 ```
 .
-├── cpu_simulador.py        # Script principal em Python que executa as instruções
-└── instrucoes.txt          # Arquivo de texto com as instruções simuladas
+├── simulador_cpu.py   # Código-fonte do simulador da CPU
+└── test.txt           # Arquivo com instruções a serem executadas
 ```
 
-## ⚙️ Como Funciona
+## ⚙️ Funcionalidades
 
-1. O arquivo `test.txt` contém uma lista de comandos que representam instruções de uma CPU.
-2. O script `simulador_cpu.py` interpreta e executa essas instruções, simulando o comportamento de uma CPU simples.
-3. Cada linha do arquivo é processada de forma sequencial, podendo incluir operações como carregamento de dados, somas, subtrações, armazenamento em registradores, entre outros.
+O simulador é capaz de:
 
-## 📄 Exemplo de Instruções (`instrucoes.txt`)
+- Carregar valores diretamente ou da memória para registradores
+- Armazenar valores dos registradores na memória
+- Somar valores entre registradores
+- Encerrar a execução com a instrução `HLT`
+
+Os registradores disponíveis são: `R0`, `R1` e `R2`. A memória possui 64 posições numeradas de 0 a 63.
+
+## ▶️ Como Usar
+
+1. Certifique-se de ter o Python 3 instalado.
+2. Coloque suas instruções no arquivo `test.txt`.
+
+Durante a execução, o estado dos registradores e parte da memória será exibido a cada instrução.
+
+## 📄 Exemplo de Instruções (`test.txt`)
 
 ```txt
-LOAD A, 5
-LOAD B, 10
-ADD A, B
-STORE C, A
-PRINT C
+# Meu primeiro programa para a CPU simulada
+LOAD R0, 5
+LOAD R1, 12
+ADD R0, R1
+STORE [30], R0
+LOAD R2, [30]
+HLT
 ```
 
-Neste exemplo, o simulador:
-- Carrega os valores 5 e 10 nos registradores A e B,
-- Soma A com B,
-- Armazena o resultado em C,
-- E imprime o valor final de C.
+### Explicação:
 
-## 🚀 Objetivo
+- `LOAD R0, 5`: Carrega o valor 5 em R0
+- `LOAD R1, 12`: Carrega o valor 12 em R1
+- `ADD R0, R1`: Soma R1 em R0 (R0 = 17)
+- `STORE [30], R0`: Armazena R0 na memória posição 30
+- `LOAD R2, [30]`: Carrega da memória[30] para R2
+- `HLT`: Interrompe a execução
 
-Este projeto foi criado como parte de um trabalho acadêmico para demonstrar de forma simples como uma CPU pode interpretar e executar instruções em baixo nível. É uma ferramenta útil para compreensão dos princípios básicos de arquitetura de computadores.
+## 🎯 Objetivo
+
+Este simulador foi desenvolvido como parte de um trabalho acadêmico para demonstrar conceitos fundamentais de operação de CPUs, como registradores, memória e instruções básicas.
